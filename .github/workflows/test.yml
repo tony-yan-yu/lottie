@@ -22,8 +22,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Install Cocoapods
+        run: |
+          sudo gem install cocoapods
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v1
+      
+      - name: Install dependencies
+        run: |
+          cd Demo/
+          pod install
 
       # Runs a single command using the runners shell
       - name: List available Xcode versions
